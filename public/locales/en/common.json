@@ -1,4 +1,15 @@
 {
   "title": "My Next.js App",
-  "welcome": "Welcome to a modern, fully localized, and styled web application."
+  "welcome": "Welcome to a modern, fully localized, and styled web application.",
+  "header": {
+    "about": "About",
+    "blog": "Blog"
+  },
+  "footer": {
+    "text": "Made with ❤️ by Gia Thinh Nguyen"
+  },
+  "not-found": {
+    "title": "Not Found",
+    "text": "404 - The page you are looking found cannot be found"
+  }
 }

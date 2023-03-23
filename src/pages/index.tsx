@@ -1,10 +1,11 @@
+import { Article, Main, Section } from "@/components/Layout";
 import { getDocBySlug } from "@/utils/docs.api";
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useTranslation } from "next-i18next";
-import { SelectLocale } from "@/components/SelectLocale";
+import Head from "next/head";
 
 export async function getStaticProps({ locale = "en" }: GetStaticPropsContext) {
   const { content, meta } = getDocBySlug("landing", locale);
@@ -24,11 +25,19 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t } = useTranslation(["common"]);
   return (
-    <main>
-      <h1>{t("title")}</h1>
-      <h2>{t("welcome")}</h2>
-      <MDXRemote {...content} />
-      <SelectLocale />
-    </main>
+    <>
+      <Head>
+        <title>{t("title")}</title>
+      </Head>
+      <Main>
+        <Article>
+          <Section>
+            <h1>{t("title")}</h1>
+            <h2>{t("welcome")}</h2>
+            <MDXRemote {...content} />
+          </Section>
+        </Article>
+      </Main>
+    </>
   );
 }

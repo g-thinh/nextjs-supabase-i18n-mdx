@@ -1,4 +1,15 @@
 {
   "title": "Mon App Next.js",
-  "welcome": "Bienvenue dans une application Web moderne, entièrement localisée et stylisée."
+  "welcome": "Bienvenue dans une application Web moderne, entièrement localisée et stylisée.",
+  "header": {
+    "about": "À propos",
+    "blog": "Blogue"
+  },
+  "footer": {
+    "text": "Fait avec ❤️ by Gia Thinh Nguyen"
+  },
+  "not-found": {
+    "title": "Page non trouvée",
+    "text": "404 - La page que vous recherchez est introuvable"
+  }
 }
