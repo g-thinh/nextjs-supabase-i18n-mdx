@@ -1,4 +1,4 @@
-import { Article, Main, Section } from "@/components/Layout";
+import { Article, Main, Section, Banner } from "@/components/Layout";
 import { getDocBySlug } from "@/utils/docs.api";
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import { useTranslation } from "next-i18next";
@@ -8,7 +8,7 @@ import { serialize } from "next-mdx-remote/serialize";
 import Head from "next/head";
 
 export async function getStaticProps({ locale = "en" }: GetStaticPropsContext) {
-  const { content, meta } = getDocBySlug("landing", locale);
+  const { content, meta } = getDocBySlug("about", locale);
   const source = await serialize(content);
   return {
     props: {
@@ -19,7 +19,7 @@ export async function getStaticProps({ locale = "en" }: GetStaticPropsContext) {
   };
 }
 
-export default function LandingPage({
+export default function AboutPage({
   meta,
   content,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
@@ -27,13 +27,26 @@ export default function LandingPage({
   return (
     <>
       <Head>
-        <title>{`${meta.title} - ${t("title")}`}</title>
+        <title>
+          {meta.title} - {t("title")}
+        </title>
       </Head>
+      <Banner>
+        <Article>
+          <Section
+            css={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <h2>{meta.title}</h2>
+          </Section>
+        </Article>
+      </Banner>
       <Main>
         <Article>
           <Section>
-            <h1>{t("title")}</h1>
-            <h2>{t("welcome")}</h2>
             <MDXRemote {...content} />
           </Section>
         </Article>

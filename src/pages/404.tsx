@@ -22,7 +22,13 @@ export default function NotFoundPage() {
       </Head>
       <Banner>
         <Article>
-          <Section>
+          <Section
+            css={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <h2>{t("not-found.text")}</h2>
           </Section>
         </Article>

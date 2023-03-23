@@ -37,6 +37,7 @@ export const Main = styled("main", {
 export const Article = styled("article", {
   width: "100%",
   padding: "$4",
+  height: "100%",
 });
 
 export const Section = styled("section", {
