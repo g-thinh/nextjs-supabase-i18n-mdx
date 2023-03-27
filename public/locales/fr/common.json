@@ -3,7 +3,10 @@
   "welcome": "Bienvenue dans une application Web moderne, entièrement localisée et stylisée.",
   "header": {
     "about": "À propos",
-    "blog": "Blogue"
+    "blog": "Blogue",
+    "profile": "Profil",
+    "login": "Connexion",
+    "logout": "Se déconnecter"
   },
   "footer": {
     "text": "Fait avec ❤️ by Gia Thinh Nguyen"
@@ -11,5 +14,34 @@
   "not-found": {
     "title": "Page non trouvée",
     "text": "404 - La page que vous recherchez est introuvable"
+  },
+  "form-signin": {
+    "title": "Connexion",
+    "text": "Entrez votre email et votre mot de passe pour vous connecter à PayloadCMS",
+    "email": "Courriel",
+    "password": "Mot de passe",
+    "submit": "Se connecter",
+    "signup-cta": "Vous n'avez pas de compte? Cliquez <0>ici</0> pour vous inscrire.",
+    "errors": {
+      "required-email": "Veuillez entrer votre courriel.",
+      "required-password": "Veuillez entrer votre mot de passe."
+    }
+  },
+  "form-signup": {
+    "title": "Inscription",
+    "text": "Remplissez le formulaire ci-dessous pour créer votre compte avec PayloadCMS.",
+    "name": "Nom d'utilisateur",
+    "email": "Courriel",
+    "password": "Mot de passe",
+    "confirm-password": "Confirmez votre mot de passe",
+    "submit": "Soumettre",
+    "login-cta": "Vous avez déjà un compte? Cliquez <0>ici</0> to pour vous connecter.",
+    "errors": {
+      "required-name": "Veuillez entrer votre nom d'utilisateur.",
+      "required-email": "Veuillez entrer votre courriel.",
+      "required-password": "Veuillez entrer votre mot de passe.",
+      "required-confirm-password": "Veuillez confirmer mot de passe.",
+      "validate-password": "Vos mots de passe ne correspondent pas."
+    }
   }
 }

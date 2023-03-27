@@ -1,38 +1,29 @@
+import { FormSignup } from "@/components/FormSignup";
 import { Article, Main, Section } from "@/components/Layout";
-import { getDocBySlug } from "@/utils/docs.api";
-import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
+import { GetStaticPropsContext } from "next";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { MDXRemote } from "next-mdx-remote";
-import { serialize } from "next-mdx-remote/serialize";
 import Head from "next/head";
 
 export async function getStaticProps({ locale = "en" }: GetStaticPropsContext) {
-  const { content, meta } = getDocBySlug("landing", { locale });
-  const source = await serialize(content);
   return {
     props: {
-      content: source,
-      meta,
       ...(await serverSideTranslations(locale, ["common"])),
     },
   };
 }
 
-export default function LandingPage({
-  meta,
-  content,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function SignupPage() {
   const { t } = useTranslation(["common"]);
   return (
     <>
       <Head>
-        <title>{`${meta.title} - ${t("title")}`}</title>
+        <title>{`${t("form-signup.title")} - ${t("title")}`}</title>
       </Head>
-      <Main>
+      <Main type="full">
         <Article>
           <Section>
-            <MDXRemote {...content} />
+            <FormSignup />
           </Section>
         </Article>
       </Main>

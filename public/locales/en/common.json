@@ -3,7 +3,10 @@
   "welcome": "Welcome to a modern, fully localized, and styled web application.",
   "header": {
     "about": "About",
-    "blog": "Blog"
+    "blog": "Blog",
+    "profile": "Profile",
+    "login": "Login",
+    "logout": "Logout"
   },
   "footer": {
     "text": "Made with ❤️ by Gia Thinh Nguyen"
@@ -11,5 +14,34 @@
   "not-found": {
     "title": "Not Found",
     "text": "404 - The page you are looking found cannot be found"
+  },
+  "form-signin": {
+    "title": "Login",
+    "text": "Enter your email and password to login to PayloadCMS.",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Login",
+    "signup-cta": "Already have an account? Click <0>here</0> to login.",
+    "errors": {
+      "required-email": "Please enter your email.",
+      "required-password": "Please enter your password."
+    }
+  },
+  "form-signup": {
+    "title": "Sign Up",
+    "text": "Fill out the form below to create your account with PayloadCMS.",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "confirm-password": "Confirm Password",
+    "submit": "Submit",
+    "login-cta": "Already have an account? Click <0>here</0> to login.",
+    "errors": {
+      "required-name": "Please enter your username.",
+      "required-email": "Please enter your email.",
+      "required-password": "Please enter your password.",
+      "required-confirm-password": "Please confirm your password.",
+      "validate-password": "Your passwords do not match."
+    }
   }
 }

@@ -3,6 +3,7 @@ import NextLink from "next/link";
 import { Section } from "./Layout";
 import { SelectLocale } from "./SelectLocale";
 import { useTranslation } from "next-i18next";
+import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
 
 export const Container = styled("header", {
   position: "sticky",
@@ -53,6 +54,9 @@ const Button = styled("button", {
 
 export function Header() {
   const { t } = useTranslation(["common"]);
+  const user = useUser();
+  const supabase = useSupabaseClient();
+
   return (
     <Container>
       <Section
@@ -77,6 +81,22 @@ export function Header() {
             <li>
               <StyledLink href="/blog">{t("header.blog")}</StyledLink>
             </li>
+            {user ? (
+              <>
+                <li>
+                  <StyledLink href="/profile">{t("header.profile")}</StyledLink>
+                </li>
+                <li>
+                  <Button onClick={() => supabase.auth.signOut()}>
+                    {t("header.logout")}
+                  </Button>
+                </li>
+              </>
+            ) : (
+              <li>
+                <StyledLink href="/signin"> {t("header.login")}</StyledLink>
+              </li>
+            )}
           </ul>
         </nav>
       </Section>
