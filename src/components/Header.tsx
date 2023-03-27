@@ -4,6 +4,7 @@ import { Section } from "./Layout";
 import { SelectLocale } from "./SelectLocale";
 import { useTranslation } from "next-i18next";
 import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
+import { useRouter } from "next/router";
 
 export const Container = styled("header", {
   position: "sticky",
@@ -55,7 +56,17 @@ const Button = styled("button", {
 export function Header() {
   const { t } = useTranslation(["common"]);
   const user = useUser();
+  const router = useRouter();
   const supabase = useSupabaseClient();
+
+  const handleSignout = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      console.error(error);
+    }
+
+    router.push("/");
+  };
 
   return (
     <Container>
@@ -87,9 +98,7 @@ export function Header() {
                   <StyledLink href="/profile">{t("header.profile")}</StyledLink>
                 </li>
                 <li>
-                  <Button onClick={() => supabase.auth.signOut()}>
-                    {t("header.logout")}
-                  </Button>
+                  <Button onClick={handleSignout}>{t("header.logout")}</Button>
                 </li>
               </>
             ) : (
