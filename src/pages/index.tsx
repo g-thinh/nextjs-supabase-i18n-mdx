@@ -8,7 +8,7 @@ import { serialize } from "next-mdx-remote/serialize";
 import Head from "next/head";
 
 export async function getStaticProps({ locale = "en" }: GetStaticPropsContext) {
-  const { content, meta } = getDocBySlug("landing", locale);
+  const { content, meta } = getDocBySlug("landing", { locale });
   const source = await serialize(content);
   return {
     props: {
