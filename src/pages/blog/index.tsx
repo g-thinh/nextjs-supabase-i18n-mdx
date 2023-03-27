@@ -32,9 +32,7 @@ export default function BlogPage({
   return (
     <>
       <Head>
-        <title>
-          {meta.title} - {t("title")}
-        </title>
+        <title>{`${meta.title} - ${t("title")}`}</title>
       </Head>
       <Banner>
         <Article>

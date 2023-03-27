@@ -52,9 +52,7 @@ export default function BlogPostPage({
   return (
     <>
       <Head>
-        <title>
-          {meta.title} - {t("title")}
-        </title>
+        <title>{`${meta.title} - ${t("title")}`}</title>
       </Head>
       <Banner>
         <Article>
