@@ -9,7 +9,6 @@ import { useRouter } from "next/router";
 export const Container = styled("header", {
   position: "sticky",
   top: 0,
-  height: "4em",
   display: "flex",
   backgroundColor: "hsl(0,0%,15%)",
   color: "white",
@@ -73,9 +72,15 @@ export function Header() {
       <Section
         css={{
           display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "0 1rem",
+          padding: "1rem",
+          flexDirection: "column",
+          gap: "$2",
+          "@md": {
+            padding: "1rem",
+            alignItems: "center",
+            justifyContent: "space-between",
+            flexDirection: "row",
+          },
         }}
       >
         <h1>
