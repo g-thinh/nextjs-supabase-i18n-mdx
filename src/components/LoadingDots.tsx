@@ -1,4 +1,5 @@
-import { styled, keyframes } from "@/styles/stitches.config";
+import { css, keyframes, styled } from "@/styles/stitches.config";
+import type * as Stitches from "@stitches/react";
 
 const flashing = keyframes({
   "0%": {
@@ -9,7 +10,7 @@ const flashing = keyframes({
   },
 });
 
-const Dots = styled("div", {
+const DotsCss = css({
   position: "relative",
   width: 8,
   height: 8,
@@ -24,28 +25,56 @@ const Dots = styled("div", {
     display: "inline-block",
     position: "absolute",
     top: 0,
-  },
-
-  "&::before": {
-    left: -12,
     width: 8,
     height: 8,
     borderRadius: 5,
     backgroundColor: "white",
     color: "white",
     animation: `${flashing} 1s infinite linear alternate`,
+  },
+
+  "&::before": {
+    left: -12,
     animationDelay: "0s",
   },
 
   "&::after": {
     left: 12,
-    width: 8,
-    height: 8,
-    borderRadius: 5,
-    backgroundColor: "white",
-    color: "white",
-    animation: `${flashing} 1s infinite linear alternate`,
     animationDelay: "1s",
+  },
+});
+
+const Dots = styled("div", DotsCss, {
+  variants: {
+    type: {
+      large: {
+        width: 14,
+        height: 14,
+        borderRadius: "$full",
+
+        "&::before, &::after": {
+          content: "",
+          display: "inline-block",
+          position: "absolute",
+          top: 0,
+          width: 14,
+          height: 14,
+          borderRadius: "$full",
+          backgroundColor: "white",
+          color: "white",
+          animation: `${flashing} 1s infinite linear alternate`,
+        },
+
+        "&::before": {
+          left: -24,
+          animationDelay: "0s",
+        },
+        "&::after": {
+          left: 24,
+          animationDelay: "1s",
+        },
+      },
+    },
   },
 });
 
@@ -54,10 +83,16 @@ const DotsContainer = styled("div", {
   py: "$1",
 });
 
-export function LoadingDots() {
+type DotsVariants = Stitches.VariantProps<typeof Dots>;
+
+type LoadingDotsProps = {
+  type?: DotsVariants["type"];
+};
+
+export function LoadingDots({ type }: LoadingDotsProps) {
   return (
     <DotsContainer>
-      <Dots />
+      <Dots type={type} />
     </DotsContainer>
   );
 }

@@ -1,55 +1,36 @@
 import { Article, Main, Section } from "@/components/Layout";
-import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
-import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
+import { ProtectedRoute } from "@/components/ProtectedRoute";
+import { useUser } from "@supabase/auth-helpers-react";
+import { GetStaticPropsContext } from "next";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
 
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-  // Create authenticated Supabase Client
-  const supabase = createServerSupabaseClient(context);
-
-  // Check if we have a session
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-
-  // Protect the route if we do not have a session
-  if (!session) {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
-  }
-
+export async function getStaticProps({ locale = "en" }: GetStaticPropsContext) {
   return {
     props: {
-      initialSession: session,
-      user: session.user,
-      ...(await serverSideTranslations(context.locale ?? "en", ["common"])),
+      ...(await serverSideTranslations(locale, ["common"])),
     },
   };
 }
 
-export default function ProfilePage({
-  user,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function ProfilePage() {
   const { t } = useTranslation(["common"]);
+  const user = useUser();
+
   return (
-    <>
+    <ProtectedRoute redirectTo={"/signin"}>
       <Head>
         <title>{`${t("header.profile")} - ${t("title")}`}</title>
       </Head>
       <Main type="full">
         <Article>
           <Section>
-            <h2>{`${t("welcome")}, ${user.user_metadata.username}`}</h2>
+            <h2>{`${t("welcome")}, ${user?.user_metadata.username}`}</h2>
             <pre>{JSON.stringify(user, null, 2)}</pre>
           </Section>
         </Article>
       </Main>
-    </>
+    </ProtectedRoute>
   );
 }
