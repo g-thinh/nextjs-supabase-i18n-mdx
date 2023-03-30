@@ -1,0 +1,27 @@
+{
+  "forgot-password": {
+    "title": "Mot de passe oublié",
+    "text": "Mot de passe oublié? Entrez votre adresse e-mail ci-dessous, et vous recevrez un e-mail.",
+    "email": "Courriel",
+    "submit": "Réinitialiser le mot de passe",
+    "errors": {
+      "required-email": "Veuillez entrer votre courriel."
+    },
+    "submitted": {
+      "title": "Réinitialisation du mot de passe envoyée",
+      "text": "Un e-mail contenant des instructions pour réinitialiser votre mot de passe a été envoyé à votre adresse avec succès. Veuillez vérifier votre boîte de réception."
+    }
+  },
+  "update-password": {
+    "title": "Mettre à jour le mot de passe",
+    "text": "Entrez et confirmez votre nouveau mot de passe ci-dessous pour mettre à jour votre mot de passe.",
+    "new-password": "Nouveau mot de passe",
+    "confirm-new-password": "Confirmer le nouveau mot de passe",
+    "submit": "Mettre à jour le mot de passe",
+    "errors": {
+      "required-new-password": "Veuillez entrer votre nouveau mot de passe.",
+      "required-confirm-new-password": "Veuillez confirmer votre nouveau mot de passe.",
+      "validate-new-password": "Vos nouveaux mots de passe ne correspondent pas."
+    }
+  }
+}

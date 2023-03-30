@@ -1,15 +1,28 @@
+import { styled } from "@/styles/stitches.config";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { Trans, useTranslation } from "next-i18next";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-import { ButtonSubmit, Form, Input, Label, Row, TextError } from "./Form";
+import {
+  ButtonSubmit,
+  Form,
+  Input,
+  Label,
+  Row,
+  TextError,
+  TextFooter,
+} from "./Form";
 import { LoadingDots } from "./LoadingDots";
 
 type FormSigninData = {
   email: string;
   password: string;
 };
+
+const LinkForgotPassword = styled(NextLink, {
+  fontSize: "$sm",
+});
 
 export function FormSignin() {
   const router = useRouter();
@@ -72,6 +85,9 @@ export function FormSignin() {
             {t("common:form-signin.errors.required-password")}
           </TextError>
         )}
+        <LinkForgotPassword href="/forgot-password">
+          Forgot password?
+        </LinkForgotPassword>
       </Row>
       <Row>{errors.root && <TextError>{errors.root.message}</TextError>}</Row>
       <div style={{ display: "flex", alignItems: "center" }}>
@@ -79,7 +95,7 @@ export function FormSignin() {
           {isSubmitting ? <LoadingDots /> : t("common:form-signin.submit")}
         </ButtonSubmit>
       </div>
-      <p>
+      <TextFooter>
         <Trans
           i18nKey={"common:form-signin.signup-cta"}
           t={t}
@@ -87,7 +103,7 @@ export function FormSignin() {
             <NextLink key="common:form-signin.signup-cta" href="/signup" />,
           ]}
         />
-      </p>
+      </TextFooter>
     </Form>
   );
 }

@@ -8,9 +8,11 @@
 import "i18next";
 
 import type common from "./public/locales/en/common.json";
+import type form from "./public/locales/en/form.json";
 
 interface Namespaces {
   common: typeof common;
+  form: typeof form;
 }
 
 declare module "i18next" {

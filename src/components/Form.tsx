@@ -44,7 +44,14 @@ export const TextError = styled("p", {
   color: "red",
 });
 
+export const TextFooter = styled("p", {
+  fontSize: "$sm",
+});
+
 export const ButtonSubmit = styled("button", {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
   px: "$4",
   height: "2.5em",
   backgroundColor: "hsl(0,0%, 0%)",
