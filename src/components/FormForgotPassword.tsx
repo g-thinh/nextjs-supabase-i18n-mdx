@@ -1,6 +1,5 @@
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { useTranslation } from "next-i18next";
-import getConfig from "next/config";
 import { useForm } from "react-hook-form";
 import { ButtonSubmit, Form, Input, Label, Row, TextError } from "./Form";
 import { LoadingDots } from "./LoadingDots";
@@ -9,7 +8,7 @@ type FormForgotPasswordData = {
   email: string;
 };
 
-const { publicRuntimeConfig } = getConfig();
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export function FormForgotPassword() {
   const supabase = useSupabaseClient();
@@ -27,10 +26,7 @@ export function FormForgotPassword() {
 
   const handleOnSubmit = handleSubmit(async ({ email }) => {
     try {
-      const redirectUrl = new URL(
-        "update-password",
-        publicRuntimeConfig.baseUrl
-      );
+      const redirectUrl = new URL("update-password", BASE_URL);
 
       const { error } = await supabase.auth.resetPasswordForEmail(email, {
         redirectTo: redirectUrl.href,
