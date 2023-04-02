@@ -15,6 +15,9 @@
     "title": "Not Found",
     "text": "404 - The page you are looking found cannot be found"
   },
+  "error": {
+    "image": "Image not found"
+  },
   "form-signin": {
     "title": "Login",
     "text": "Enter your email and password to login to PayloadCMS.",

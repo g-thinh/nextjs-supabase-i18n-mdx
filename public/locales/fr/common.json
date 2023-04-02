@@ -15,6 +15,9 @@
     "title": "Page non trouvée",
     "text": "404 - La page que vous recherchez est introuvable"
   },
+  "error": {
+    "image": "Image non trouvée"
+  },
   "form-signin": {
     "title": "Connexion",
     "text": "Entrez votre email et votre mot de passe pour vous connecter à PayloadCMS",
