@@ -1,3 +1,4 @@
+import { HeroLanding } from "@/components/HeroLanding";
 import { Article, Main, Section } from "@/components/Layout";
 import { getDocBySlug } from "@/utils/docs.api";
 import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
@@ -29,7 +30,8 @@ export default function LandingPage({
       <Head>
         <title>{`${meta.title} - ${t("title")}`}</title>
       </Head>
-      <Main>
+      <HeroLanding />
+      <Main type={"full"}>
         <Article>
           <Section>
             <MDXRemote {...content} />

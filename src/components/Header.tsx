@@ -12,6 +12,7 @@ export const Container = styled("header", {
   display: "flex",
   backgroundColor: "hsl(0,0%,15%)",
   color: "white",
+  zIndex: 999,
 
   h1: {
     fontSize: "$2xl",
