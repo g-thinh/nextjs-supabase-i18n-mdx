@@ -54,7 +54,7 @@ export function Image({ ratio = 1, ...props }: ImageProps) {
   return (
     <AspectRatioRoot ratio={ratio}>
       <>
-        <Shimmer css={{ opacity: isLoading ? 1 : 0 }} />
+        {!props.priority && <Shimmer css={{ opacity: isLoading ? 1 : 0 }} />}
         {hasError ? (
           <ContainerText>
             <TextError>{t("common:error.image")}</TextError>

@@ -8,7 +8,7 @@ export function HeroLanding() {
     <Hero.Root>
       <Image
         ratio={16 / 9}
-        priority
+        priority={true}
         src={"/images/hero-landing.jpg"}
         alt="Photo by https://unsplash.com/@colin_r_carter"
       />
