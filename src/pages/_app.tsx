@@ -6,6 +6,7 @@ import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import { SessionContextProvider } from "@supabase/auth-helpers-react";
 import { useState } from "react";
 import { Footer } from "@/components/Footer";
+import { MDXGlobalProvider } from "@/components/MDXProvider";
 
 function App({ Component, pageProps }: AppProps) {
   const [supabase] = useState(() => createBrowserSupabaseClient());
@@ -14,11 +15,13 @@ function App({ Component, pageProps }: AppProps) {
       supabaseClient={supabase}
       initialSession={pageProps.initialSession}
     >
-      <Layout>
-        <Header />
-        <Component {...pageProps} />
-        <Footer />
-      </Layout>
+      <MDXGlobalProvider>
+        <Layout>
+          <Header />
+          <Component {...pageProps} />
+          <Footer />
+        </Layout>
+      </MDXGlobalProvider>
     </SessionContextProvider>
   );
 }

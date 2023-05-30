@@ -11,6 +11,9 @@ import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import Head from "next/head";
 import path from "path";
+import { Image } from "@/components/Image";
+import Card from "@/components/Card";
+import { List, ListItem } from "@/components/List";
 
 export async function getStaticProps({
   locale = "en",
@@ -49,6 +52,14 @@ export default function BlogPostPage({
   content,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const { t } = useTranslation(["common"]);
+
+  const components = {
+    Image,
+    Card,
+    List,
+    ListItem,
+  };
+
   return (
     <>
       <Head>
@@ -67,10 +78,10 @@ export default function BlogPostPage({
           </Section>
         </Article>
       </Banner>
-      <Main>
+      <Main type="full">
         <Article>
           <Section>
-            <MDXRemote {...content} />
+            <MDXRemote {...content} components={components} />
           </Section>
         </Article>
       </Main>
