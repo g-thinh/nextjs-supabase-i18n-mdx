@@ -16,6 +16,7 @@ export const Main = styled("main", {
   width: "100%",
   maxWidth: CONTENT_WIDTH,
   margin: "0 auto",
+  flexDirection: "column",
 
   "@lg": {
     display: "grid",

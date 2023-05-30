@@ -7,6 +7,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import Head from "next/head";
+import { LatestPosts } from "@/components/LatestPosts";
 
 export async function getStaticProps({ locale = "en" }: GetStaticPropsContext) {
   const { content, meta } = getDocBySlug("landing", { locale });
@@ -36,6 +37,9 @@ export default function LandingPage({
           <Section>
             <MDXRemote {...content} />
           </Section>
+        </Article>
+        <Article>
+          <LatestPosts />
         </Article>
       </Main>
     </>

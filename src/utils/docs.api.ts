@@ -11,13 +11,13 @@ type Options = {
   locale: string;
 };
 
-type Document = {
+export type Document = {
   slug: string;
   meta: MetaProps;
   content: string;
 };
 
-type Folder = "blog" | "/";
+export type Folder = "blog" | "/";
 
 const CONTENT_PATH = path.join(process.cwd(), "/src/content");
 const MDX_REGEX = new RegExp(/\.mdx$/);
